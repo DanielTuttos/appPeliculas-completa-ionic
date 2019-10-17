@@ -7,26 +7,20 @@ import { ToastController } from '@ionic/angular';
   providedIn: 'root'
 })
 export class DataLocalService {
-
   peliculas: PeliculaDetalle[] = [];
-
   constructor(private storage: Storage, private toastCtrl: ToastController) {
     this.cargarFavoritos();
   }
 
   guardarPelicula(pelicula: PeliculaDetalle) {
-
     let existe: boolean = false;
     let mensaje: string = '';
-
     for (let peli of this.peliculas) {
       if (peli.id === pelicula.id) {
         existe = true;
         break;
       }
-
     }
-
     if (existe) {
       this.peliculas = this.peliculas.filter(peli => peli.id !== pelicula.id);
       mensaje = 'Removido de Favoritos';
@@ -34,12 +28,9 @@ export class DataLocalService {
       this.peliculas.push(pelicula);
       mensaje = 'Agregada a Favoritos';
     }
-
     this.storage.set('peliculas', this.peliculas);
-    console.log('guardado');
-
+    //console.log('guardado');
     this.presentToast(mensaje);
-
     return !existe;
   }
 
@@ -60,7 +51,6 @@ export class DataLocalService {
   }
 
   async existePelicula(id) {
-
     await this.cargarFavoritos();
     const existe = this.peliculas.find(peli => peli.id === id);
     return (existe) ? true : false;

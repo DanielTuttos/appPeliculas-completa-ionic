@@ -32,7 +32,7 @@ export class Tab2Page {
 
     if (valor.length > 0) {
       this.buscando = true;
-      console.log(valor);
+      //console.log(valor);
       this.movieService.buscarPeliculas(valor)
         .subscribe(res => {
           //console.log(res);

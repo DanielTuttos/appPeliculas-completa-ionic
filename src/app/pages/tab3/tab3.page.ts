@@ -28,7 +28,6 @@ export class Tab3Page implements OnInit {
 
 
   pelisPorGenero(generos: Genre[], peliculas: PeliculaDetalle[]) {
-
     this.favoritoGenero = [];
     generos.forEach(genero => {
       this.favoritoGenero.push({

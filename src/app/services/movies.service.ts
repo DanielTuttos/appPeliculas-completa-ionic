@@ -57,13 +57,11 @@ export class MoviesService {
   }
 
   cargarGeneros(): Promise<Genre[]> {
-
     return new Promise(resolve => {
-
       this.ejecutarQuery(`/genre/movie/list?a=1`)
         .subscribe(res => {
           this.generos = res['genres'];
-          console.log(this.generos);
+          //console.log(this.generos);
           resolve(this.generos);
         });
     });
